@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-app
+  labels:
+    name: java-app
+    app: java-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: java-app
+      app: java-app
+  template:
+    metadata:
+      name: java-app
+      labels:
+        name: java-app
+        app: java-app
+    spec:
+      containers:
+        - name: tomcat-java-app
+          image: sakshammv/k8sassignment
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
